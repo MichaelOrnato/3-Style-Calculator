@@ -1,0 +1,2722 @@
+/*******************************************************************************
+ * Program Name: Commutators
+ * Program Description: This program helps learn 3-style edge commutators
+ *
+ * Program Date Started: 02/20/2021
+ * Date Finished:        02/22/2021
+ * Program Author: Michael Ornato
+ * Change #:        Change Date:        Programmer Name:        Description:
+ * ---------        ------------        ---------------         ------------
+ ******************************************************************************/
+
+package commutators;
+
+import java.util.Scanner;
+
+public class CornerCommutators {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("A commutator works like this: [A B] = A B A' B' ");
+        System.out.println("Example: [R U R', M'] = R U R' M' R U' R' M");
+        // Prompt user to enter first letter
+        System.out.print("\nIn 3-Style Blindfolded Solving, the buffer piece is "
+                + "the UFR corner piece. \nLook at the UFR corner piece, and enter its letter: ");
+        String letter1 = input.next();
+        letter1 = letter1.toUpperCase();
+
+        // Prompt user to enter second letter:
+        System.out.print("What piece is in its spot? ");
+        String letter2 = input.next();
+        letter2 = letter2.toUpperCase(); 
+        
+        switch (letter1) {
+            case "A": 
+                System.out.println("\nFirst Target: ULB");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: ULB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: URB");
+                        System.out.println("This cycle is U-Any/U-Any"); 
+                        System.out.println("\nSolution: [R' B' R : [R D R', U']]");
+                        System.out.println("Or: R' B' R R D R' U' R D' R' U"); 
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Any/U-Any."); 
+                        System.out.println("\nSolution: [R' D R U2 : [R' D' R, U]]");
+                        System.out.println("Or: R' D R U2 R' D' R U R' D R U' U2' R' D' R"); 
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [F : [U2, F' R F R']]");
+                        System.out.println("Or: F U2 F' R F R' U2' R F' R' F F'"); 
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Top/D-Side");
+                        System.out.println("\nSolution: [R' D R, U2]");
+                        System.out.println("Or: R' D R U2 R' D' R U2");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [D : [R D' R', U2]]"); 
+                        System.out.println("Or: D R D' R' U2 R D R' U2' D'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [r D' U : [R D R', U2]]");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [D U' : [R D R', U2]]"); 
+                        System.out.println("Or: D U' R D R' U2 R D' R' U2' U D'"); 
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Top/D-Side");
+                        System.out.println("\nSolution: [D : [R' D' R, U2]]");
+                        System.out.println("Or: D R' D' R U2 R' D R U2' D'");
+                        break;
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R' U D R2 : [U', R' D' R]]");
+                        System.out.println("Or: R' U D R2 U' R' D' R U R' D R R2' D' U' R");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [U' : [R D R', U2]]");
+                        System.out.println("Or: U' R D R' U2 R D' R' U2' U");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [R' D' R, U2]");
+                        System.out.println("Or: R' D' R U2 R' D R U2'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/U-Any");
+                        System.out.println("\nSolution: [R' U D : [R D R', U2]]");
+                        System.out.println("Or: R' U D R D R' U2 R D' R' U2' D' U' R");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is U-Top/D-Side");
+                        System.out.println("\nSolution: [D' U' : [R D R', U2]]");
+                        System.out.println("Or: D' U' R D R' U2 R D' R' U2' U D");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is a U-Top/D-Side.");
+                        System.out.println("\nSolution: [D U' : [R D' R', U2]]");
+                        System.out.println("Or: D U' R D' R' U2 R D R' U2' U D'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is U-Top/D-Bottom");
+                        System.out.println("\nSolution: [R F' R' U' : [R D R', U2]]");
+                        System.out.println("Or: R F' R' U' R D R' U2 R D' R' U2' U R F R'");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is Special");
+                        System.out.println("\nSolution: [R' D R U' R D' R', U2]");
+                        System.out.println("Or: R' D R U' R D' R' U2 R D R' U R' D' R");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is U-Top/D-Bottom");
+                        System.out.println("\nSolution: [R D' R' : [R' D R, U2]]");
+                        System.out.println("Or: R D' R' R' D R U2 R' D' R U2' R D R'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is Special");
+                        System.out.println("\nSolution: [R' U' D' R : [R U' R', D]]");
+                        System.out.println("Or: R' U' D' R R U' R' D R U R' D' R' D U R");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+            case "B": 
+                System.out.println("\nFirst Target: UBR");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R' B' R : [U', R D R']]");
+                        System.out.println("Or: R' B' R U' R D R' U R D' R' R' B R"); 
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R F' R' : [R' D R, U]]");
+                        System.out.println("Or: R F' R' R' D R U R' D' R U' R F R'"); 
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R : [U, R D R']]");
+                        System.out.println("Or: R U R D R' U' R D' R' R'"); 
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R2 : [D', R U' R']]");
+                        System.out.println("Or: R2 D' R U' R' D R U R' R2'"); 
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Any/D-Side");
+                        System.out.println("\nSolution: [R' D R, U]");
+                        System.out.println("Or: R' D R U R' D' R U'"); 
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Any/D-Side.");
+                        System.out.println("\nSolution: [U', R D' R']");
+                        System.out.println("Or: U' R D' R' U R D R'"); 
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Any/U-Any"); 
+                        System.out.println("\nSolution: [R2 U' : [D', R U R']]");
+                        System.out.println("Or: R2 U' D' R U R' D R U' R' U R2'");
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [D' : [R' D R, U]]");
+                        System.out.println("Or: D' R' D R U R' D' R U' D"); 
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [D : [R' D' R, U]]");
+                        System.out.println("Or: D R' D' R U R' D R U' D'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is cannot be done.");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Top/Di-Side.");
+                        System.out.println("\nSolution: [U', R D R']");
+                        System.out.println("Or: U' R D R' U R D' R' U");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Top/Di-Side.");
+                        System.out.println("\nSolution: [R' D' R, U]");
+                        System.out.println("Or: R' D' R U R' D R U'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle cannot be done."); 
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R2 U : [R' U' R, D]]");
+                        System.out.println("Or: R2 U R' U' R D R' U R D' U' R2'"); 
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [D' : [U', R D R']]");
+                        System.out.println("Or: D' U' R D R' U R D' R' D"); 
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nSolution: [D : [U', R D' R']]");
+                        System.out.println("Or: D U' R D' R' U R D R' D'"); 
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nSolution: [R F' : [R' U' R, D]]");
+                        System.out.println("Or: R F' R' U' R D R' U R D' F R'"); 
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nSolution: [R' D R U' R D' R', U]");
+                        System.out.println("Or: R' D R U' R D' R' U R D R' U R' D' R"); 
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nSolution: [U', R D' R' U R' D R]");
+                        System.out.println("Or: U' R D' R' U R' D R U R' D' R U' R D R'"); 
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nSolution: [R' B : [D', R U R']]");
+                        System.out.println("Or: R' B D' R U R' D R U' R' B' R"); 
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+            case "D": 
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R' D R U' : [R' D' R, U']]");
+                        System.out.println("Or: R' D R U' R' D' R U' R' D R U U R' D' R"); 
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R F' R' : [U, R' D R]]");
+                        System.out.println("Or: R F' R' U R' D R U' R' D' R R F R'"); 
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [U' R2 : [D, R' U2 R]]");
+                        System.out.println("Or: U' R2 D R' U2 R D' R' U2' R R2' U"); 
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Any/D-Side");
+                        System.out.println("\nSolution: [R' D R, U']");
+                        System.out.println("Or: R' D R U' R' D' R U"); 
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Any/D-Side.");
+                        System.out.println("\nSolution: [U' : [R D' R', U']]");
+                        System.out.println("Or: U' R D' R' U' R D R' U U"); 
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle cannot be done."); 
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Any/D-Side.");
+                        System.out.println("\nSolution: [D' : [R' D R, U']]");
+                        System.out.println("Or: D' R' D R U' R' D' R U D");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Any/D-Side.");
+                        System.out.println("\nSolution: [D : [R' D' R, U']]");
+                        System.out.println("Or: D R' D' R U' R' D R U D'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [U' R' : [U2, R' D' R]]");
+                        System.out.println("Or: U' R' U2 R' D' R U2' R' D R R U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Any/D-Side");
+                        System.out.println("\nSolution: [U' : [R D R', U']]"); 
+                        System.out.println("Or: U' R D R' U' R D' R' U U"); 
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Any/D-Side");
+                        System.out.println("\nSolution: [R' D' R, U']"); 
+                        System.out.println("Or: R' D' R U' R' D R U"); 
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [R' D' : [U', R' D R]]"); 
+                        System.out.println("Or: R' D' U' R' D R U R' D' R D R"); 
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nSolution: [U' R' : [U', R' D' R]]"); 
+                        System.out.println("Or: U' R' U' R' D' R U R' D R R U"); 
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is U-Any/D-Side.");
+                        System.out.println("\nSolution: [D : [R' D R, U']]"); 
+                        System.out.println("Or:: D R' D R U' R' D' R U D'"); 
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is ");
+                        System.out.println("\nSolution: [D' : [R' D' R, U']]"); 
+                        System.out.println("Or: D' R' D' R U' R' D R U D"); 
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nSolution: R' U' R : [F2', R' U R U']");
+                        System.out.println("Or: R' U' R F2' R' U R U' F2 U R' U' R R' U R"); 
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nSolution: [R' D R U' R D' R', U']");
+                        System.out.println("Or: R' D R U' R D' R' U' R D R' U R' D' R"); 
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DNR");
+                        System.out.println("This cycle is U-Top/D-Bottom");
+                        System.out.println("\nSolution: [R D' R' : [R' D R, U']]");
+                        System.out.println("Or: R D' R' R' D R U' R' D' R U R D R'"); 
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nSolution: [R' D' R : [R U' R', D]]");
+                        System.out.println("Or: R' D' R R U' R' D R U R' D' R' D R"); 
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+            case "E": 
+                System.out.println("\nFirst Target: LUB");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL"); 
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R2 : [D, R' U R]]");
+                        System.out.println("Full Solution: R2 D R' U R D' R' U' R R2'"); 
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U' R : [U2, R D R']]");
+                        System.out.println("Full Solution: U' R U2 R D R' U2' R D' R' R' U"); 
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle cannnot be done.");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U' R' F : [D, R U R']]");
+                        System.out.println("Full Solution: U' R' F D R U R' D' R U' R' D' F' R U"); 
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Side/D-Any");
+                        System.out.println("\nCycle: [U R' : [U', R' D R]]");
+                        System.out.println("Full Solution: U R' U' R' D R U R' D' R R U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R D' : [R D R', U]]");
+                        System.out.println("Full Solution: R D' R D R' U R D' R' U' D R'"); 
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Any/U-Any");
+                        System.out.println("\nCycle: [l' U : [R D' R', U2]]");
+                        System.out.println("Full Solution: l' U R D' R' U2 R D R' U2' U' l"); 
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U D' R' : [U', R' D R]]");
+                        System.out.println("Full Solution: U D' R' U' R' D R U R' D' R R D U'"); 
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U : [R' D R, U]]");
+                        System.out.println("Full Solution: R U R' D R U R' D' R U' U' R'"); 
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' D R2 D' R2' : [U, R2 D R2' D' R2]]");
+                        System.out.println("Full Solution: R' D R2 D' R2' U R2 D R2' D' R2 U' R2' D R2 D' R2' R2 D R2' D' R"); 
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [U' R : [R U' R', D']]"); 
+                        System.out.println("Full Solution: U' R R U' R' D' R U R' D R' U");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R' U2 : [R D R', U]]");
+                        System.out.println("Full Solution: U R' U2 R D R' U R D' R' U' U2' R U'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R', F' L F]");
+                        System.out.println("Full Solution: R' F' L F R F' L' F");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL"); 
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U D R' : [U', R' D R]]");
+                        System.out.println("Full Solution: U D' R' U' R' D R U R' D' R R D' U'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U : [R' D' R, U]]");
+                        System.out.println("R U R' D' R U R' D R U' U' R'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL"); 
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' R : [R D' R', U]]");
+                        System.out.println("Full Solution: D' R R D' R' U R D R' U' R' D");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R' D' : [U', R' D' R]]");
+                        System.out.println("Full Solution: U R' D' U' R' D' R U R' D R D R U'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D R : [R D' R', U]]");
+                        System.out.println("Full Solution: D R R D' R' U R D R' U' R' D'"); 
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R : [R D' R', U]]");
+                        System.out.println("Full Solution: R R D' R' U R D R' U' R'"); 
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                } 
+                break; 
+            case "F": 
+                System.out.println("First Target: LUF");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [F : [R' D' R, U2]]");
+                        System.out.println("Full Solution: F R' D' R U2 R' D R U2' F'"); 
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' : [U', R' D' R]]");
+                        System.out.println("Full Solution: R' U' R' D' R U R' D R R"); 
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U' R' U, L]");
+                        System.out.println("Full Solution: U' R' U L U' R U L'"); 
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [R' U' : [D, R U R']]");
+                        System.out.println("Full Solution: R' U' D R U R' D' R U' R' U R"); 
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' R U' : [D', R' U R]]");
+                        System.out.println("Full Solution: U' R U' D' R' U R D R' U' R U R' U"); 
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle cannnot be done.");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nCycle: [R : [F, R' U R U']]");
+                        System.out.println("Full Solution: R F R' U R U' F' U R' U' R R'"); 
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [D R' U' : [D', R U R']]");
+                        System.out.println("Full Solution: D R' U' D' R U R' D R U' R' U R D'"); 
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R U' D' R' : [D, R' U R]]");
+                        System.out.println("Full Solution: R U' D' R' D R' U R D' R' U' R R D U R"); 
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nCycle: [D' R : [F, R' U R U']]");
+                        System.out.println("Full Solution: D' R F R' U R U' F' U R' U' R R' D"); 
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: ");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [R' U' : [D', R U R']]");
+                        System.out.println("Full Solution: R' U' D' R U R' D R U' R' U R"); 
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/D-Any.");
+                        System.out.println("\nCycle: [R' F : [R U R', D]]");
+                        System.out.println("Full Solution: R' F R U R' D R U' R' D' F' R"); 
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [l U' l', F]");
+                        System.out.println("Full Solution: l U' l' F l U l' F'"); 
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is Special");
+                        System.out.println("\nCycle: [l U2 l', F]");
+                        System.out.println("Full Solution: l U2 l' F l U2' l' F'"); 
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [D' R' U' : [D', R U R']]");
+                        System.out.println("Full Solution: D' R' U' D' R U R' D R U' R' U R D"); 
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' R' U : [R U' R', D]]");
+                        System.out.println("Full Solution: U' R' U R U' R' D R U R' D' U' R U"); 
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' D' R' U : [R U' R', D]]");
+                        System.out.println("Full Solution: U' D' R' U R U' R' D R U R' D' U' R D U"); 
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is Special");
+                        System.out.println("\nCycle: [R U' R' : [D, R' U R]]");
+                        System.out.println("Full Solution: R U' R' D R' U R D' R' U' R R U R'"); 
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is LUF/D-Any");
+                        System.out.println("\nCycle: [U' D R' U : [R U' R', D]]");
+                        System.out.println("Full Solution: U' D R' U R U' R' D R U R' D' U' R D' U"); 
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                } 
+                break; 
+            case "G": 
+                System.out.println("\nFirst Target: LDF");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL"); 
+                        System.out.println("This cycle is U-Top/D-Side."); 
+                        System.out.println("\nCycle: [U2, R' D R]");
+                        System.out.println("Full Solution: U2 R' D R U2' R' D' R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side."); 
+                        System.out.println("\nCycle: [U, R' D R]");
+                        System.out.println("Full Solution: U R' D R U' R' D' R"); 
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side."); 
+                        System.out.println("\nCycle: U', R' D R");
+                        System.out.println("Full SOlution: U' R' D R U R' D' R");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any."); 
+                        System.out.println("\nCycle: U R' : [R' D R, U']"); 
+                        System.out.println("Full Solution: U R' R' D R U' R' D' R U R U'"); 
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any"); 
+                        System.out.println("\nCycle: [R' U' : [R U R', D]]");
+                        System.out.println("Full Solution: R' U' R U R' D R U' R' D' U R");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle cannot be done. "); 
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is Special."); 
+                        System.out.println("\nCycle: [D R' : [F', R D' R']]");
+                        System.out.println("Full Solution: D R' F' R D' R' F R D R' R D'"); 
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is Special.");
+                        System.out.println("\nCycle: [D R' : [F2, R D' R' D]]");
+                        System.out.println("Full Solution: D R' F2 R D' R' D F2' D' R D R' R D'"); 
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Side."); 
+                        System.out.println("\nCycle: [U : [D, R U' R']]");
+                        System.out.println("Full Solution: U D R U' R' D' R U R' U'"); 
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U : [R' D R, U2]]");
+                        System.out.println("Full Solution: U R U R' D R U2 R' D' R U2' U' R' U'"); 
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB"); 
+                        System.out.println("This cycle is D-Side/D-Side."); 
+                        System.out.println("\nCycle: [U D : [R U' R', D2]]");
+                        System.out.println("Full Solution: U D R U' R' D2 R U R' D2' D' U'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Side."); 
+                        System.out.println("\nCycle: [U R' D : [R U' R', D2]]");
+                        System.out.println("Full Solution: U R' D R U' R' D2 R U R' D2' D' R U'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any."); 
+                        System.out.println("\nCycle: [R' U : [R U' R', D]]");
+                        System.out.println("Full Solution: R' U R U' R' D R U R' D'"); 
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R B' R' : [R' D R, U]]");
+                        System.out.println("Full Solution: R B' R' R' D R U R' D' R U' R B R'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Side"); 
+                        System.out.println("\nCycle: [U D : [R U' R', D]]");
+                        System.out.println("Full Solution: U D R U' R' D R U R' D' D' U'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [R' D R : [D', R U R']]");
+                        System.out.println("Full Solution: R' D R D' R U R' D R U' R' R' D' R");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Side/D-Bottom."); 
+                        System.out.println("\nCycle: [U D R D' : [U', R' D R]]");
+                        System.out.println("Full Solution: U D R D' U' R' D R U R' D' R D R' D' U'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Side/D-Bottom."); 
+                        System.out.println("\nCycle: [U R : [D, R U' R']]");
+                        System.out.println("Full Solution: U R D R U' R' D' R U R' R' U'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special");
+                        System.out.println("\nCycle: [D U R U' : [F2', U R' U' R]]"); 
+                        System.out.println("Full Solution: D U R U' F2' U R' U' R F2 R' U R U' U R' U' D'");
+                        break;
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                } 
+                break; 
+            case "H": 
+                System.out.println("First Target: LDB");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side");
+                        System.out.println("\nCycle: [U : [R D' R', U2]]");
+                        System.out.println("Full Solution: U R D' R' U2 R D R' U2' U'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [R D' R', U']");
+                        System.out.println("Full Solution: R D' R' U' R D R' U");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side");
+                        System.out.println("\nCycle: [U2 : [R D' R', U]]");
+                        System.out.println("Full Solution: U2 R D' R' U R D R' U' U2'");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R D' : [U, R D R']]");
+                        System.out.println("Full Solution: R D' U R D R' U' R D' R' D R'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' R U' : [R' U R, D']]");
+                        System.out.println("Full Solution: U' R U' R' U R D' R' U' R D U R' U");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [R' D : [F', D' R D R']]");
+                        System.out.println("Full Solution: R' D F' D' R D R' F R D' R' D D' R");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U' D : [R' D R, U2]]");
+                        System.out.println("Full Solution: R U' D R' D R U2 R' D' R U2' D' U R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [l' U : [D, R U' R']]");
+                        System.out.println("Full Solution: l' U D R U' R' D' R U R' U' l");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D2 : [R U R', D']]");
+                        System.out.println("Full Solution: D2 R U R' D' R U' R' D D2'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R : [R D' R', U2]]");
+                        System.out.println("Full Solution: U R R D' R' U2 R D R' U2' R' U'");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R D' : [R' U' R, D2]]");
+                        System.out.println("Full Solution: R D' R' U' R D2 R' U R D2' D R'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D2, R U R']");
+                        System.out.println("Full Solution: D2 R U R' D2' R U' R'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is LUF/D-Any - Special.");
+                        System.out.println("\nCycle: [U' L U, R]");
+                        System.out.println("Full Solution: U' L U R U' L' U R'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [U D R' F' : [D, R U' R']]");
+                        System.out.println("Full Solution: U D R' F' D R U' R' D' R U R' D' F R D' U'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D2 : [R U R', D]]");
+                        System.out.println("Full Solution: D2 R U R' D R U' R' D' D2'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D R U' R' : [R' D R, U2]]");
+                        System.out.println("Full Solution: D R U' R' R' D R U2 R' D' R U2' R U R' D'");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R U' D R' : [R' D R , U2]]");
+                        System.out.println("Full Solution: R U' D R' R' D R U2 R' D' R U2' R D' U R'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Side/D-Bottom. - Special.");
+                        System.out.println("\nCycle: [R D' R' : [R' D R , U]]");
+                        System.out.println("Full Solution: R D' R' R' D R U R' D' R U' R D R'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle canot be done.");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "I": 
+                System.out.println("First Target: FUL");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: R' D R U' R : [F , R' U R U']");
+                        System.out.println("Full Solution: R' D R U' R F R' U R U' F' U R' U' R R' U R' D' R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R2 U' : [R U R' , D']]");
+                        System.out.println("Full Solution: R2 U' R U R' D' R U' R' D U R2'");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [l' U' : [R D' R' , U2]]");
+                        System.out.println("Full Solution: l' U' R D' R' U2 R D R' U2' U l");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R' D : [F2 , D' R D R']]");
+                        System.out.println("Full Solution: R' D F2 D' R D R' F2' R D' R' D D' R");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U D : [R' D R , U2]]");
+                        System.out.println("Full Solution: R U D R' D R U2 R' D' R U2' D' U' R'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [D' R' D : [F2 , D' R D R']]");
+                        System.out.println("Full Solution: D' R' D F2 D' R D R' F2' R D' R' D D' R D");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U : [R' D R , U2]]");
+                        System.out.println("Full Solution: R U R' D R U2 R' D' R U2' U' R'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' F' R D U : [U2 , R' D' R]");
+                        System.out.println("Full Solution: R' F' R D U U2 R' D' R U2' R' D R U' D' R' F R");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R D' U : [R' D R , U2]]");
+                        System.out.println("Full Solution: R D' U R' D R U2 R' D' R U2' U' D R'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D R U : [R' D' R , U2]]");
+                        System.out.println("Full Solution: D R U R' D' R U2 R' D R U2' U' R' D'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R U D' : [R' D' R , U2]]");
+                        System.out.println("Full Solution: R U D' R' D' R U2 R' D R U2' D U' R'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R U R' U D : [R D R' , U2]]");
+                        System.out.println("Full Solution: R U R' U D R D R' U2 R D' R' U2' D' U' R U' R'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [D R' D : [F2 , D' R D R']]");
+                        System.out.println("Full Solution: D R' D F2 D' R D R' F2' R D' R' D D' R D'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U : [R' D' R , U2]]");
+                        System.out.println("Full Solution: R U R' D' R U2 R' D R U2' U' R'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' R : [R D' R' , U2]]");
+                        System.out.println("Full Solution: D' R R D' R' U2 R D R' U2' R' D");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R U' R' D' : [R' D R , U2]]");
+                        System.out.println("Full Solution: R U' R' D' R' D R U2 R' D' R U2' D R U R'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D R : [R D' R' , U2]]");
+                        System.out.println("Full Solution: D R R D' R' U2 R D R' U2' R' D'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R : [R D' R' , U2]]");
+                        System.out.println("Full Solution: R R D' R' U2 R D R' U2' R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "K": 
+                System.out.println("First Target: FDR");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side");
+                        System.out.println("\nCycle: [U D : [R D R' , U2]]");
+                        System.out.println("Full Solution: U D R D R' U2 R D' R' U2' D' U'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D' : [U , R' D R]]");
+                        System.out.println("Full Solution: D' U R' D R U' R' D' R D");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D' : [U', R' D R]]");
+                        System.out.println("Full Solution: D' U' R' D R U R' D' R D");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' U R' : [R' D R , U']]");
+                        System.out.println("Full Solution: D' U R' R' D R U' R' D' R U R U' D");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any - Special.");
+                        System.out.println("\nCycle: [U R U' : [F , U R' U' R]]");
+                        System.out.println("Full Solution: U R U' F U R' U' R F' R' U R U' U R' U'");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U : [R U' R' , D]]");
+                        System.out.println("Full Solution: U R U' R' D R U R' D'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [l' U : [R U' R' , D]]");
+                        System.out.println("Full Solution: l' U R U' R' D R U R' D' U' l");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R' : [F2 , R D' R' D]]");
+                        System.out.println("Full Solution: R' F2 R D R' D F2' D' R D R' R");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [R' : [F' , R D' R' D]]");
+                        System.out.println("Full Solution: R' F' R D' R' D F D' R D R' R");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U : [R D R' , U2]]");
+                        System.out.println("Full Solution: U' R' U R D R' U2 R D' R' U2' U' R U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U : [R U' R', D']]");
+                        System.out.println("Full Solution: U R U' R' D' R U R' D U'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D' R' U : [R U' R', D]]");
+                        System.out.println("Full Solution: D' R' U R U' R' D R U R' D' U' R D");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U2 : [R D R', U]]");
+                        System.out.println("Full Solution: U' R' U2 R D R' U R D' R' U' U2' R U");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U : [R U' R', D2]]");
+                        System.out.println("Full Solution: U R U' R' D2 R U R' D2' U'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is U-Side/U-Side - Special.");
+                        System.out.println("\nCycle: [R U R' U' : [D', R U R']]");
+                        System.out.println("Full Solution: R U R' U' D' R U R' D R U' R' U R U' R'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [U R U' : [F2', U R' U' R]]");
+                        System.out.println("Full Solution: U R U' F2' U R' U' R F2 R' U R U' U R' U'");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle cannot be done. ");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U R' D' : [U', R' D R]]");
+                        System.out.println("Full Solution: U R' D' U' R' D R U R' D' R D R U'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R' D' R : [R U R' , D]]");
+                        System.out.println("Full Solution: R' D' R R U R' D R U' R' D' R' D R");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "L": 
+                System.out.println("First Target: FDL");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D' U : [R D' R' , U2]]");
+                        System.out.println("Full Solution: D' U R D' R' U2 R D R' U2' U' D");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D : [U , R' D' R]]");
+                        System.out.println("Full Solution: D U R' D' R U' R' D R D'");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D : [U' , R' D' R]]");
+                        System.out.println("Full Solution: D U' R' D' R U R' D R D'");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U2 : [R' D R , U']]");
+                        System.out.println("Full Solution: R U2 R' D R U' R' D' R U U2' R'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [D R' U' : [R U R' , D']]");
+                        System.out.println("Full Solution: D R' U' R U R' D' R U' R' D U R D'");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D : [R U R' , D]]");
+                        System.out.println("Full Solution: D R U R' D R U' R' D' D'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U' : [R' D R , U U]]");
+                        System.out.println("Full Solution: R U' R' D R U2 R' D' R U2 U R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [D' R' D : [F' , D' R D R']]");
+                        System.out.println("Full Solution: D' R' D F' D' R D R' F R D' R' D D' R D");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U D : [R' D' R , U2]]");
+                        System.out.println("Full Solution: U R U D R' D' R U2 R' D R U2' D' U' R' U'");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R D2 : [R' U' R , D']]");
+                        System.out.println("Full Solution: R D2 R' U' R D' R' U R D D2' R'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D, R U R']");
+                        System.out.println("Full Solution: D R U R' D' R U' R'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any - Special.");
+                        System.out.println("\nCycle: [R' F : [R U' R' , D]]");
+                        System.out.println("Full Solution: R' F R U' R' D R U R' D' F' R");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special");
+                        System.out.println("\nCycle: D R' : [D, R' U R]");
+                        System.out.println("Full Solution: D R' D R' U R D' R' U' R R D'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D' R D' : [R' U' R , D2]]");
+                        System.out.println("Full Solution: D' R D' R' U' R D2 R' U R D2' D R' D");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D : [R U R', D2]]");
+                        System.out.println("Full Solution: D R U R' D2 R U' R' D2' D'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is cannot be done.");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R U' R' : [R' D R , U2]]");
+                        System.out.println("Full Solution: R U' R' R' D R U2 R' D' R U2' R U R'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D R : [R D' R', U']]");
+                        System.out.println("Full Solution: D R R D' R' U' R D R' U R' D'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D R D : [U, R' D' R]]");
+                        System.out.println("Full Solution: D R D U R' D' R U' R' D R D' R' D'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "N": 
+                System.out.println("First Target: RUB");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' U D R : [D' , R U' R']]");
+                        System.out.println("Full Solution: R' U D R D' R U' R' D R U R' R' D' U' R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U' R2' : [D' R U2 R']]");
+                        System.out.println("Full Solution: U' R2' D' R U2 R' D R U2' R' R2 U");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R : [U , R2 D R2 D' R2]]");
+                        System.out.println("Full Solution: R U R2 D R2 D' R2 U' R2' D R2' D' R2'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R U' D' R' : [R' U R , D]]");
+                        System.out.println("Full Solution: R U' D' R' R' U R D R' U' R D R D U R'");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U' : [R' D R, U2]]");
+                        System.out.println("Full Solution: U R U' R' D R U2 R' D' R U2' U R' U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R : [U2, R D' R']]");
+                        System.out.println("Full Solution: U R U2 R D' R' U2' R D R' R' U'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' F' R D U : [R' D' R, U2]");
+                        System.out.println("Full Solution: R' F' R D U R' D' R U2 R' D R U2' U' D' R' F R");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U' : [R D R', U2]]");
+                        System.out.println("Full Solution: U' R' U' R D R' U2 R D' R' U2' U R U");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U' D : [R' D' R, U2]]");
+                        System.out.println("Full Solution: U R U' D R' D' R U2 R' D R U2' D' U R' U'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U' : [R' D' R, U2]]");
+                        System.out.println("Full Solution: U R U' R' D' R U2' R' D R U2' U R' U'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' D U' : [R D' R', U2]]");
+                        System.out.println("Full Solution: U' R' D U' R D' R' U2 R D R' U2' U D' R U");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U R2 U' : [D', R U R']]");
+                        System.out.println("Full Solution: U R2 U' D' R U R' D R U' R' U R2' U'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U' : [R D' R', U2]]");
+                        System.out.println("Full Solution: U' R' U' R D' R' U2 R D R' U2' U R U");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R' F' R D' U : [R' D R, U2]]");
+                        System.out.println("Full Solution: R' F' R D' U R' D R U2 R' D' R U2' U' D R' F R");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' : [R' D R, U2]]");
+                        System.out.println("Full Solution: U' R' R' D R U2 R' D' R U2' R U");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' U' R' : [R' D R, U2]]");
+                        System.out.println("Full Solution: D' U' R' R' D R U2 R' D' R U2' R U D");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U' D' : [R' D R, U2]]");
+                        System.out.println("Full Solution: U R U' D' R' D R U2 R' D' R U2' D U R' U'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D U' R' : [R' D R, U2]]");
+                        System.out.println("Full Solution: D U' R' R' D R U2 R' D' R U2' R U D'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "O": 
+                System.out.println("First Target: RDB");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U : [R D R', U2]]");
+                        System.out.println("Full Solution: U R D R' U2 R D' R' U2' U'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [R D R', U']");
+                        System.out.println("Full Solution: R D R' U' R D' R' U");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U2 : [R D R', U]]");
+                        System.out.println("Full Solution: U2 R D R' U R D' R' U' U2'");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [U' R' F R : [R D R', U']]");
+                        System.out.println("Full Solution: U' R' F R R D R' U' R D' R' U R' F' R U");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any - Special.");
+                        System.out.println("\nCycle: [D' R : [R' U R U', F]]");
+                        System.out.println("Full Solution: D' R R' U R U' F U R' U' R F' R' D");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U D' : [R U' R' , D2]]");
+                        System.out.println("Full Solution: U D' R U' R' D2 R U R' D2' D U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R D : [R' U' R , D2]]");
+                        System.out.println("Full Solution: R D R' U' R D2 R' U R D2' D' R'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R D' U' : [R' D R , U2]]");
+                        System.out.println("Full Solution: R D' U' R' D R U2 R' D' R U2' U D R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U : [D', R U' R']]");
+                        System.out.println("Full Solution: U D' R U' R' D R U R' U'");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R D : [R' U' R, D]]");
+                        System.out.println("Full Solution: R D R' U' R D R' U R D' D' R'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U : [R' D' R, U2]]");
+                        System.out.println("Full Solution: U R U R' D' R U2 R' D R U2' U' R' U'");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R D' : [R' D R, U]]");
+                        System.out.println("Full Solution: R D' R' D R U R' D' R U' D R'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [U' R U : [R' U' R, D]]");
+                        System.out.println("Full Solution: U' R U R' U' R D R' U R D' U' R' U");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R D' : [R' U' R, D]]");
+                        System.out.println("Full Solution: R D' R' U' R D R' U R D' D R'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U' : [R' U' R, D']]");
+                        System.out.println("Full Solution: U' R' U' R D' R' U R D U");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U' R' : [R' D R, U]]");
+                        System.out.println("Full Solution: U' R' R' D R U R' D' R U' R U");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D' U R U' : [F2, U R' U' R]]");
+                        System.out.println("Full Solution: D' U R U' F2 U R' U' R F2' R' U R U' U R' U' D");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U D' R D' : [U', R' D R]]");
+                        System.out.println("Full Solution: U D' R D' U' R' D R U R' D' R D R' D U'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "P": 
+                System.out.println("First Target: RDF");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U2, R' D' R]");
+                        System.out.println("Full Solution: U2 R' D' R U2' R' D R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U, R' D' R]");
+                        System.out.println("Full Solution: U R' D' R U' R' D R");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U', R' D' R]");
+                        System.out.println("Full Solution: U' R' D' R U R' D R");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R' U' : [R D R', U']]");
+                        System.out.println("Full Solution: U R' U' R D R' U' R D' R' U U R U'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any");
+                        System.out.println("\nCycle: [R' U' : [R U R' , D']]");
+                        System.out.println("Full Solution: R' U' R U R' D' R U' R' D U R");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U R' D' : [R U' R', D2]]");
+                        System.out.println("Full Solution: U R' D' R U' R' D2 R U R' D2' D R U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R U R', D2]");
+                        System.out.println("Full Solution: R U R' D2 R U' R' D2'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D R U' : [R' D' R, U2]]");
+                        System.out.println("Full Solution: D R U' R' D' R U2 R' D R U2' U R' D'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R U R', D]");
+                        System.out.println("Full Solution: R U R' D R U' R' D'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' D U : [R D' R', U2]]");
+                        System.out.println("Full Solution: U' R' D U R D' R' U2 R D R' U2' U' D' R U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [R D' : [U, R' D R]]");
+                        System.out.println("Full Solution: R D' U R' D R U' R' D' R D R'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [R' U : [R U' R', D']]");
+                        System.out.println("Full Solution: R' U R U' R' D' R U R' D U' R");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R' : [D, R' U R]]");
+                        System.out.println("Full Solution: R' D R' U R D' R' U' R R");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U R' D' : [R U' R' , D']]");
+                        System.out.println("Full Solution: U R' D' R U' R' D' R U R' D D R U'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [R U R', D']");
+                        System.out.println("Full Solution: R U R' D' R U' R' D");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [R D : [U, R' D' R]]");
+                        System.out.println("Full Solution: R D U R' D' R U' R' D R D' R'");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D' R U' R' : [R' D R, U2]]");
+                        System.out.println("Full Solution: D' R U' R' R' D R U2 R' D' R U2' R U R' D");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [R : [R D' R', U']]");
+                        System.out.println("Full Solution: R R D' R' U' R D R' U R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break;
+                case "Q": 
+                System.out.println("First Target: BUR");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' U' D : [R D R', U2]]");
+                        System.out.println("Full Solution: R' U' D R D R' U2 R D' R' U2' D' U R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' D' : [R' D R, U']]");
+                        System.out.println("Full Solution: R' D' R' D R U' R' D' R U D R");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [F' L F, R']");
+                        System.out.println("Full Solution: F' L F R' F' L' F R");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R' F : [D, R U R']]");
+                        System.out.println("Full Solution: R' F D R U R' D' R U' R' F' R");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [R' U : [D, R U' R']]");
+                        System.out.println("Full Solution: R' U D R U' R' D' R U R' U' R");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is BUR/D-Any - Special.");
+                        System.out.println("\nCycle: [R, U' L U]");
+                        System.out.println("Full Solution: R U' L U R' U' L' U");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R D' U' : [R' D' R, U2]]");
+                        System.out.println("Full Solution: R D' U' R' D' R U2 R' D R U2' U D R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D' R' U : [D, R U' R']]");
+                        System.out.println("Full Solution: D' R' U D R U' R' D' R U R' U' R D");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is BUR/D-Any - Special.");
+                        System.out.println("\nCycle: [R' F : [D, R U' R']]");
+                        System.out.println("Full Solution: R' F D R U' R' D' R U R' F' R");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [U' R U : [D, R' U' R]]");
+                        System.out.println("Full Solution: U' R U D R' U' R D' R' U R U' R' U");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [R' U : [D' , R U' R']]");
+                        System.out.println("Full Solution: R' U D' R U' R' D R U R' U' R");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R, U' L' U]");
+                        System.out.println("Full Solution: R U' L' U R' U' L U");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D R' U : [D , R U' R']]");
+                        System.out.println("Full Solution: D R' U D R U' R' D' R U R' D' U' R D'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is BUR/D-Any - Special.");
+                        System.out.println("\nCycle: [R U' : [R' U R, D]]");
+                        System.out.println("Full Solution: R U' R' U R D R' U' R D' U R'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D' R U' : [R' U R, D']]");
+                        System.out.println("Full Solution: D' R U' R' U R D' R' U' R D U R' D");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is BUR/D-Any - Special.");
+                        System.out.println("\nCycle: [U R' U' : [R U R', D']]");
+                        System.out.println("Full Solution: U R' U' R U R' D' R U' R' D U R U'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D R U' : [R' U R, D']]");
+                        System.out.println("Full Solution: D R U' R' U R D' R' U' R D U R' D'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [R U' : [R' U R, D']]");
+                        System.out.println("Full Solution: R U' R' U R D' R' U' R D U R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "R": 
+                System.out.println("First Target: BUL");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R2 U : [D, R' U' R]]");
+                        System.out.println("Full Solution: R2 U D R' U' R D' R' U R U' R2'");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U' R2' : [D', R U' R']]");
+                        System.out.println("Full Solution: U' R2' D' R U' R' D R U R' R2 U");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [F, l U' l']");
+                        System.out.println("Full Solution: F l U' l' F' l U l'");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R B' R' : [U, R' D R]]");
+                        System.out.println("Full Solution: R D' R' U R' D R U' R' D' R R D R'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [U D R' F' : [R U' R', D]]");
+                        System.out.println("Full Solution: U D R' F' R U' R' D R U R' D' F R D' U'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [R U R' D' : [R' D R , U2]]");
+                        System.out.println("Full Solution: R U R' D' R' D R U2 R' D' R U2' D R U' R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U' : [R D R', U']]");
+                        System.out.println("Full Solution: U' R' U' R D R' U' R D' R' U U R U");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [D R' : [R' U R, D]]");
+                        System.out.println("Full Solution: D R' R' U R D R' U' R D' R D'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U R2 U' : [R U R' , D']]");
+                        System.out.println("Full Solution: U R2 U' R U R' D' R U' R' D U R2' U'");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R B' : [D, R' U' R]]");
+                        System.out.println("Full Solution: R B' D R' U' R D' R' U R B R'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R2' : [U, R D R']]");
+                        System.out.println("Full Solution: R2' U R D R' U' R D' R' R2");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is U-Any/U-Any.");
+                        System.out.println("\nCycle: [U' L' U, R]");
+                        System.out.println("Full Solution: U' L' U R U' L U R'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U' : [R D' R', U']]");
+                        System.out.println("Full Solution: U' R' U' R D' R' U' R D R' U U R U");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is ");
+                        System.out.println("\nCycle: [D' R2' : [U, R D R']]");
+                        System.out.println("Full Solution: D' R2' U R D R' U' R D' R' R2 D");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' : [R' D R , U']]");
+                        System.out.println("Full Solution: U' R' R' D R U' R' D' R U R U");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' U' R' : [R' D R, U']]");
+                        System.out.println("Full Solution: D' U' R' R' D R U' R' D' R U R U D");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [U R : [D', R U' R']]");
+                        System.out.println("Full Solution: U R D' R U' R' D R U R' R' U'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R2 U : [D', R' U' R]]");
+                        System.out.println("Full Solution: R2 U D' R' U' R D R' U R U' R2'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "S": 
+                System.out.println("First Target: BDL");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U D' : [R D R', U2]]");
+                        System.out.println("Full Solution: U D' R D R' U2 R D' R' U2' D U'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D' : [R D R' , U']]");
+                        System.out.println("Full Solution: D' R D R' U' R D' R' U D");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D : [U', R' D R]]");
+                        System.out.println("Full Solution: D U' R' D R U R' D' R D'");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D U R' : [R' D R, U']]");
+                        System.out.println("Full Solution: D U R' R' D R U' R' D' R U R U' D'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any - Special.");
+                        System.out.println("\nCycle: [F, l U2 l']");
+                        System.out.println("Full Solution: F l U2 l' F' l U2' l'");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U D2 : [R U' R', D']]");
+                        System.out.println("Full Solution: U D2 R U' R' D' R U R' D D2' U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [D R' D : [F2, D' R D R']]");
+                        System.out.println("Full Solution: D R' D F2 D' R D R' F2' R D' R' D D' R D'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U : [D2, R U' R']]");
+                        System.out.println("Full Solution: U D2 R U' R' D2' R U R' U'");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D' R D : [R' U' R, D2]]");
+                        System.out.println("Full Solution: D' R D R' U' R D2 R' U R D2' D' R' D");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U : [R D' R', U2]]");
+                        System.out.println("Full Solution: U' R' U R D' R' U2 R D R' U2' U' R U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U' : [D', R' U' R]]");
+                        System.out.println("Full Solution: U' D' R' U' R D R' U R U");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [U R' D' : [D', R U' R']]");
+                        System.out.println("Full Solution: U R' D' D' R U' R' D R U R' D R U'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D R' U : [R U' R', D]]");
+                        System.out.println("Full Solution: D R' U R U' R' D R U R' D' U' R D'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' U2 : [R D' R', U]]");
+                        System.out.println("Full Solution: U' R' U2 R D' R' U R D R' U' U2' R U");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Side - Special");
+                        System.out.println("\nCycle: [D2' R' : [F', R D' R' D]]");
+                        System.out.println("Full Solution: D2' R' F' R D' R' D F D' R D R' R D2");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U' D' R' D' : [U', R D R']]");
+                        System.out.println("Full Solution: U' D' R' D' U' R D R' U R D' R' D R D U");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U' D' R' : [R' D R, U]]");
+                        System.out.println("Full Solution: U' D' R' R' D R U R' D' R U' R D U");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U R : [D2, R U' R']]");
+                        System.out.println("Full Solution: U R D2 R U' R' D2' R U R' R' U");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "T": 
+                System.out.println("First Target: BDR");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [U D : [R D', R', U2]]");
+                        System.out.println("Full Solution: U D R D' R' U2 R D R' U2' D' U'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D : [R D' R', U']]");
+                        System.out.println("Full Solution: D R D' R' U' R D R' U D'");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Side.");
+                        System.out.println("\nCycle: [D' : [U', R' D' R]]");
+                        System.out.println("Full Solution: D' U' R' D' R U R' D R D");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U2 : [R' D' R, U']]");
+                        System.out.println("Full Solution: R U2 R' D' R U' R' D R U U2' R'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [D' R' U' : [R U R', D']]");
+                        System.out.println("Full Solution: D' R' U' R U R' D' R U' R' D U R D");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [R' D R2 : [U, R' D' R]]");
+                        System.out.println("Full Solution: R' D R2 U R' D' R U' R' D R R2' D' R");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D' : [R U R', D']]");
+                        System.out.println("Full Solution: D' R U R' D' R U' R' D D");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U' : [R' D' R, U2]]");
+                        System.out.println("Full Solution: R U' R' D' R U2 R' D R U2' U R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Side - Special.");
+                        System.out.println("\nCycle: [R U R' U' : [R U R', D']]");
+                        System.out.println("Full Solution: R U R' U' R U R' D' R U' R' D U R U' R'");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D' : [R U R', D2]]");
+                        System.out.println("Full Solution: R U R' D2 R U' R' D2'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R' F' R D' U' : [R' D R, U2]]");
+                        System.out.println("Full Solution: R' F' R D' U' R' D R U2 R' D' R U2' U D R' F R");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Side.");
+                        System.out.println("\nCycle: [D', R U R']");
+                        System.out.println("Full Solution: D' R U R' D R U' R'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any - Special.");
+                        System.out.println("\nCycle: [R U' : [D, R' U R]]");
+                        System.out.println("Full Solution: R U' D R' U R D' R' U' R U R'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [D' R' : [D, R' U R]]");
+                        System.out.println("Full Solution: D' R' D R' U R D' R' U' R R D");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Side - Special");
+                        System.out.println("\nCycle: [D R' D : [F', D' R D R']]");
+                        System.out.println("Full Solution: D R' D F' D' R D R' F R D' R' D D' R D'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D' R : [R D' R', U']]");
+                        System.out.println("Full Solution: D' R R D' R' U' R D R' U R' D");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D' R D : [U, R' D' R]]");
+                        System.out.println("Full Solution: D' R D U R' D' R U' R' D R D' R' D");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [R U' D : [R' U R, D2]]");
+                        System.out.println("Full Solution: R U' D R' U R D2 R' U' R D2' D' U R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "U": 
+                System.out.println("First Target: DFL");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nCycle: [R F' R' U : [R D R', U2]]");
+                        System.out.println("Full Solution: R F' R' U R D R' U2 R D' R' U2' U' R F R'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nCycle: [R F' : [D, R' U' R]]");
+                        System.out.println("Full Solution: R F' D R' U' R D' R' U R F R'");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [U' : [F2', U R' U' R]]");
+                        System.out.println("Full Solution: U' F2' U R' U' R F2 R' U R U' U");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' R : [U, R D' R']]");
+                        System.out.println("Full Solution: D' R U R D' R' U' R D R' R' D");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' R' U : [D, R U' R']]");
+                        System.out.println("Full Solution: U' R' U D R U' R' D' R U R' U' R U");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D R U' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: D R U' R' U2 R' D R U2' R' D' R R U R' D'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R D U' : [R' D' R, U2]]");
+                        System.out.println("Full Solution: R D U' R' D' R U2 R' D R U2' U D' R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R : [F2, R' U R U']]");
+                        System.out.println("Full Solution: R F2 R' U R U' F2' U R' U' R R'");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: U' R' U2 R' D R U2' R' D' R R U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U' R' : [U, R' D R]]");
+                        System.out.println("Full Solution: U' R' U R' D R U' R' D' R R U");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [R D : [R' D' R, U]]");
+                        System.out.println("Full Solution: R D R' D' R U R' D R U' D' R'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D' R U' : [D', R' U R]]");
+                        System.out.println("Full Solution: D' R U' D' R' U R D R' U' R U R' D");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' R' : [U', R' D R]]");
+                        System.out.println("Full Solution: U' R' U' R' D R U R' D' R R U");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U' D' R' D' : [R D R', U']]");
+                        System.out.println("Full Solution: U' D' R' D' R D R' U' R D' R' U D R D U");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D' R : [U', R D' R']]");
+                        System.out.println("Full Solution: D' R U' R D' R' U R D R' R' D");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [U' R' U R : [D, R U' R']]");
+                        System.out.println("Full Solution: U' R' U R D R U' R' D' R U R' R' U' R U");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [R U' D2 : [R' U R, D]]");
+                        System.out.println("Full Solution: R U' D2 R' U R D R' U' R D' D2' U R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "V": 
+                System.out.println("First Target: DFR");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [U2, R' D R U' R D' R']");
+                        System.out.println("Full Solution: U2 R' D R U' R D' R' U2' R D R' U R' D' R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [U, R' D R U' R D' R']");
+                        System.out.println("Full Solution: U R' D R U' R D' R' U' R D R' U R' D' R");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [U', R' D R U' R D' R']");
+                        System.out.println("Full Solution: U' R' D R U' R D' R' U R D R' U R' D' R");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R' D' : [R' D' R, U']]");
+                        System.out.println("Full Solution: U R' D' R' D' R U' R' D R U D R U'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' D' R' U : [D, R U' R']]");
+                        System.out.println("Full Solution: U' D' R' U D R U' R' D' R U R' U' R D U");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U D R D' : [R' D R, U']]");
+                        System.out.println("Full Solution: U D R D' R' D R U' R' D' R U D R' D' U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R U' D R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: R U' D R' U2 R' D R U2' R' D' R R D' U R'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R U' R' U D : [R D R', U2]]");
+                        System.out.println("Full Solution: R U' R' U D R D R' U2 R D' R' U2' D' U' R U R'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R U' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: R U' R' U2 R' D R U2' R' D' R R U R'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U' D' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: U' D' R' U2 R' D R U2' R' D' R R D U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D' R : [F2, R' U R U']]");
+                        System.out.println("Full Solution: D' R F2 R' U R U' F2' U R' U' R R' D");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle cannot be done. ");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [U R' U' : [D', R U R']]");
+                        System.out.println("Full Solution: U R' U' D' R U R' D R U' R' U R U'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D' U' R' : [U', R' D R]]");
+                        System.out.println("Full Solution: D' U' R' U' R' D R U R' D' R R U D");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U' D' R' : [U, R' D R]]");
+                        System.out.println("Full Solution: U' D' R' U R' D R U' R' D' R R D U");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D' R D : [R' D' R, U]]");
+                        System.out.println("Full Solution: D' R D R' D' R U R' D R U' D' R' D");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [U' R' U R : [R U' R', D]]");
+                        System.out.println("Full Solution: U' R' U R R U' R' D R U R' D' R' U' R U");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [D R U' R' : [R' U R, D']]");
+                        System.out.println("Full Solution: D R U' R' R' U R D' R' U' R D R U R' D'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [R U' R' U : [R D' R', U2]]");
+                        System.out.println("Full Solution: R U' R' U R D' R' U2 R D R' U2' U' R U R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "W": 
+                System.out.println("First Target: DBR");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nCycle: [R D' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: R D' R' U2 R' D R U2 R' D' R R D R'");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R D' R' U R' D R, U']");
+                        System.out.println("Full Solution: R D' R' U R' D R U' R' D' R U' R D R' U");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nCycle: [R D' R' : [U', R' D R]]");
+                        System.out.println("Full Solution: R D' R' U' R' D R U R' D' R R D R'");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D R : [U, R D' R']]");
+                        System.out.println("Full Solution: D R U R D' R' U' R D R' R' D'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF-/D-Any.");
+                        System.out.println("\nCycle: [R U' R2' : [U, R D R']]");
+                        System.out.println("Full Solution: R U' R2' U R D R' U' R D' R' R2 U R'");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U R2 : [U', R' D R]]");
+                        System.out.println("Full Solution: U R2 U' R' D R U R' D' R R2' U'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R D' R' : [U, R' D R]]");
+                        System.out.println("Full Solution: R D' R' U R' D R U' R' D' R R D R'");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D R : [U2, R D' R']]");
+                        System.out.println("Full Solution: D R U2 R D' R' U2' R D R' R' D'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U R D' : [R' D R, U']]");
+                        System.out.println("Full Solution: U R D' R' D R U' R' D' R U D R' U'");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D' R2 : [R' U' R, D']]");
+                        System.out.println("Full Solution: D' R2 R' U' R D' R' U R D R2' D");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [U R U D' : [R' D R, U2]]");
+                        System.out.println("Full Solution: U R U D' R' D R U2 R' D' R U2' D U' R' U");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D' R U' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: D' R U' R' U2 R' D R U2' R' D' R R U R' D");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [D R U' : [D', R' U R]]");
+                        System.out.println("Full Solution: D R U' D' R' U R D R' U' R U R' D'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [U R2 : [U', R' D' R]]");
+                        System.out.println("Full Solution: U R2 U' R' D' R U R' D R R2' U'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U R2 : [U', R' D2 R]]");
+                        System.out.println("Full Solution: U R2 U' R' D2 R U R' D2' R R2' U'");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [U' R2' : [D, R2 U R2' U' R2]]");
+                        System.out.println("Full Solution: U' R2' D R2 U R2' U' R2 D' R2' U R2");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [D R U' R' : [D', R' U R]]");
+                        System.out.println("Full Solution: D R U' R' D' R' U R D R' U' R R U R' D'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [R U' R' : [R' U R, D']]");
+                        System.out.println("Full Solution: R U' R' R' U R D' R' U' R' D R U R'");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                case "X": 
+                System.out.println("First Target: DBL");
+                switch (letter2) {
+                    case "A": 
+                        System.out.println("Second Target: UBL");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R' U' D' R : [D, R U' R']]");
+                        System.out.println("Full Solution: R' U' D' R D R U' R' D' R U R' R' D U R");
+                        break; 
+                    case "B": 
+                        System.out.println("Second Target: UBR");
+                        System.out.println("This cycle is U-Top/D-Bottom.");
+                        System.out.println("\nCycle: [R' B : [R U R', D']]");
+                        System.out.println("Full Solution: R' B R U R' D' R U' R' D B' R");
+                        break; 
+                    case "D": 
+                        System.out.println("Second Target: UFL");
+                        System.out.println("This cycle is U-Top/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R' D' R : [D ,R U' R']]");
+                        System.out.println("Full Solution: R' D' R D R U' R' D' R U R' R' D R");
+                        break; 
+                    case "E": 
+                        System.out.println("Second Target: LUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [R : [U, R D' R']]");
+                        System.out.println("Full Solution: R U R D' R' U' R D R' R'");
+                        break; 
+                    case "F": 
+                        System.out.println("Second Target: LUF");
+                        System.out.println("This cycle is LUF/D-Any.");
+                        System.out.println("\nCycle: [U' D R' U : [D, R U' R']]");
+                        System.out.println("Full Solution: U' D R' U D R U' R' D' R U R' U' R D' U");
+                        break; 
+                    case "G": 
+                        System.out.println("Second Target: LDF");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [D R : [F2, R' U R U']]");
+                        System.out.println("Full Solution: D R F2 R' U R U' F2' U R' U' R R' D'");
+                        break; 
+                    case "H": 
+                        System.out.println("Second Target: LDB");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "I": 
+                        System.out.println("Second Target: FUL");
+                        System.out.println("This cycle is U-Side/D-Bottom.");
+                        System.out.println("\nCycle: [R2 U : [R' U R, D']]");
+                        System.out.println("Full Solution: R2 U R' U R D' R' U' R D U' R2'");
+                        break; 
+                    case "K": 
+                        System.out.println("Second Target: FDR");
+                        System.out.println("This cycle is D-Side/D-Bottom - Special.");
+                        System.out.println("\nCycle: [R' D' R : [D, R U R']]");
+                        System.out.println("Full Solution: R' D' R D R U R' D' R U' R' R' D R");
+                        break; 
+                    case "L": 
+                        System.out.println("Second Target: FDL");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [D R D : [R' D' R, U]]");
+                        System.out.println("Full Solution: D R D R' D' R U R' D R U' D' R' D'");
+                        break; 
+                    case "N": 
+                        System.out.println("Second Target: RUB");
+                        System.out.println("This cycle is U-Side/D-Any.");
+                        System.out.println("\nCycle: [D U' R' : [U2, R' D R]]");
+                        System.out.println("Full Solution: D U' R' U2 R' D R U2' R' D' R R U D'");
+                        break; 
+                    case "O": 
+                        System.out.println("Second Target: RDB");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [U D' R D' : [R' D R, U']]");
+                        System.out.println("Full Solution: U D' R D' R' D R U' R' D' R U D R' D U'");
+                        break; 
+                    case "P": 
+                        System.out.println("Second Target: RDF");
+                        System.out.println("This cycle isD-Side/D-Bottom. ");
+                        System.out.println("\nCycle: [R2 : [R' U' R, D']]");
+                        System.out.println("Full Solution: R2 R' U' R D' R' U R D R2'");
+                        break; 
+                    case "Q": 
+                        System.out.println("Second Target: BUR");
+                        System.out.println("This cycle is BUR/D-Any.");
+                        System.out.println("\nCycle: [R U' : [D', R' U R]]");
+                        System.out.println("Full Solution: R U' D' R' U R D R' U' R U R'");
+                        break; 
+                    case "R": 
+                        System.out.println("Second Target: BUL");
+                        System.out.println("This cycle is U-Side/D-Any - Special.");
+                        System.out.println("\nCycle: [R2 U : [R' U' R, D']]");
+                        System.out.println("Full Solution: R2 U R' U' R D' R' U R D U' R2'");
+                        break; 
+                    case "S": 
+                        System.out.println("Second Target: BDL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    case "T": 
+                        System.out.println("Second Target: BDR");
+                        System.out.println("This cycle is D-Side/D-Bottom.");
+                        System.out.println("\nCycle: [R U' D' : [R' U R, D2]]");
+                        System.out.println("Full Solution: R U' D' R' U R D2 R' U' R D2' D U R'");
+                        break; 
+                    case "U": 
+                        System.out.println("Second Target: DFL");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [R U' D' : [R' U R, D']]");
+                        System.out.println("Full Solution: R U' D' R' U R D' R' U' R D D U R'");
+                        break; 
+                    case "V": 
+                        System.out.println("Second Target: DFR");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [R U' R' U' : [R D' R', U2]]");
+                        System.out.println("Full Solution: R U' R' U' R D' R' U2 R D R' U2' U R U R'");
+                        break; 
+                    case "W": 
+                        System.out.println("Second Target: DBR");
+                        System.out.println("This cycle is D-Bottom/D-Bottom.");
+                        System.out.println("\nCycle: [R U' R' : [D', R' U R]]");
+                        System.out.println("Full Solution: R U' R' D' R' U R D R' U' R R U R'");
+                        break; 
+                    case "X": 
+                        System.out.println("Second Target: DBL");
+                        System.out.println("This cycle cannot be done.");
+                        break; 
+                    default: 
+                        System.out.println("Error. Second Target Entered is Buffer Piece."); 
+                        break; 
+                }
+                break; 
+                default: 
+                    System.out.println("Error. Second Target Entered is not valid.");
+        }
+    }
+    
+}
